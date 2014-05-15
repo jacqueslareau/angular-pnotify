@@ -54,7 +54,7 @@ angular.module('jlareau.pnotify', [])
         },
 
         notify: function(hash) {
-          new PNotify(hash);
+          return new PNotify(hash);
         }
 
       };

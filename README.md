@@ -16,7 +16,7 @@ A PNotify 2.0 port heavily based on [angular-pines-notify](https://github.com/my
 
 ### Demo
 
-[Check out the demo here!](https://cdn.rawgit.com/jacqueslareau/angular-pnotify/0.0.2/demo/index.html)
+[Check out the demo here!](http://pnotify.jlareau.com/demo/)
 
 ### Install
 

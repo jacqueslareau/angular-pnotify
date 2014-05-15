@@ -4,13 +4,14 @@
 
   <meta charset="utf-8">
 
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/pnotify/2.0.0/pnotify.all.min.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/pnotify/pnotify.core.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-  <script src="//cdn.jsdelivr.net/pnotify/2.0.0/pnotify.all.min.js"></script>
-  <script src="https://cdn.rawgit.com/jacqueslareau/angular-pnotify/0.0.2/src/angular-pnotify.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/pnotify/pnotify.core.js"></script>
+  <script src="/bower_components/pnotify/pnotify.confirm.js"></script>
+  <script src="/src/angular-pnotify.js"></script>
 
 </head>
 
@@ -27,40 +28,65 @@
       <p>View source for more details.</p>
       <hr>
       
-      <p><code>notificationService.success('Successing text')</code></p>
+      <p><pre>notificationService.success('Successing text')</pre></p>
       <p><button ng-click="success()" class="btn btn-success">Success</button></p>
       <hr>
       
-      <p><code>notificationService.info('Infomative text')</code></p>
+      <p><pre>notificationService.info('Infomative text')</pre></p>
       <p><button ng-click="info()" class="btn btn-info">Info</button></p>
       <hr>
       
-      <p><code>notificationService.notice('Notice text')</code></p>
+      <p><pre>notificationService.notice('Notice text')</pre></p>
       <p><button ng-click="notice()" class="btn btn-warning">Notice</button></p>
       <hr>
       
-      <p><code>notificationService.error('Error text')</code></p>
+      <p><pre>notificationService.error('Error text')</pre></p>
       <p><button ng-click="error()" class="btn btn-danger">Error</button></p>
       <hr>
       
       <p>Use the generic PNotify object.</p>
       <p>
-        <code>
-          notificationService.notify({
-            title: 'The notice title.', 
-            title_escape: false,
-            text: 'The notice text.',
-            text_escape: false,
-            styling: "bootstrap3",
-            type: "notice", 
-            icon: true
-          });
-        </code>
+        <pre>
+notificationService.notify({
+  title: 'The notice title.', 
+  title_escape: false,
+  text: 'The notice text.',
+  text_escape: false,
+  styling: "bootstrap3",
+  type: "notice", 
+  icon: true
+});
+        </pre>
       </p>
       <p><button ng-click="generic()" class="btn btn-primary">Generic PNotify</button></p>
-
-    </div>
-    
+      <hr>
+      
+      <p>
+        <pre>
+notificationService.notify({
+  title: 'Confirmation Needed',
+  text: 'Are you sure?',
+  hide: false,
+  confirm: {
+    confirm: true
+  },
+  buttons: {
+    closer: false,
+    sticker: false
+  },
+  history: {
+    history: false
+  }
+}).get().on('pnotify.confirm', function() {
+  alert('Ok, cool.');
+}).on('pnotify.cancel', function() {
+  alert('Oh ok. Chicken, I see.');
+});
+        </pre>
+        
+      </p>
+      <p><button ng-click="confirmDialog()" class="btn btn-primary">Confirm dialog</button></p>
+      
   </div>
 
   <script>
@@ -100,6 +126,30 @@
           icon: true
         });
         
+      };
+      
+      $scope.confirmDialog = function() {
+      
+        notificationService.notify({
+          title: 'Confirmation Needed',
+          text: 'Are you sure?',
+          hide: false,
+          confirm: {
+            confirm: true
+          },
+          buttons: {
+            closer: false,
+            sticker: false
+          },
+          history: {
+            history: false
+          }
+        }).get().on('pnotify.confirm', function() {
+          alert('Ok, cool.');
+        }).on('pnotify.cancel', function() {
+          alert('Oh ok. Chicken, I see.');
+        });      
+      
       };
       
     }]);
