@@ -43,11 +43,11 @@ In order to use the API you need to inject the `notificationService` service int
 
 ```javascript
 angular.module('MyApp')
-  .controller('MyCtrl', ['$scope', notificationService, function($scope, notificationService) {
+  .controller('MyCtrl', ['$scope', 'notificationService', function($scope, notificationService) {
     $scope.action = function() {
       notificationService.success('Success!!!');
     };
-  });
+  }]);
 ```
 
 ### Methods
@@ -111,7 +111,7 @@ angular.module('MyApp')
 
 ```javascript
 angular.module('MyApp')
-  .controller('MyCtrl', ['$scope', notificationService, function($scope, notificationService) {
+  .controller('MyCtrl', ['$scope', 'notificationService', function($scope, notificationService) {
 
     $scope.action = function() {
       // This is a sample using the success helper method
