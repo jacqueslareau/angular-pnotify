@@ -24,10 +24,12 @@ A PNotify 2.0 port heavily based on [angular-pines-notify](https://github.com/my
 
 ### Usage
 
-Include:
+Include PNotify related assets. You need to include at least pnotify.core.css and pnotify.core.js.
+Don't forget pnotify.confirm.js if you need confirmation dialogs.
+
+Then add angular-pnotify.js.
 
 ```html
-<link rel="stylesheet" href="bower_components/pnotify/pnotify.core.css">
 <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
 ```
 
