@@ -39,8 +39,16 @@ Add the angular-pnotify module as a dependency to your application module:
 angular.module('MyApp', ['jlareau.pnotify']);
 ```
 
-In order to use the API you need to inject the `pnotify` service into your controllers. 
-From there you can use one of the many different service methods.
+In order to use the API you need to inject the `notificationService` service into your controllers. 
+
+```javascript
+angular.module('MyApp')
+  .controller('MyCtrl', ['$scope', notificationService, function($scope, notificationService) {
+    $scope.action = function() {
+      notificationService.success('Success!!!');
+    };
+  });
+```
 
 ### Methods
 
@@ -103,7 +111,7 @@ angular.module('MyApp')
 
 ```javascript
 angular.module('MyApp')
-  .controller('MyCtrl', ['$scope', notificationService,function($scope, notificationService) {
+  .controller('MyCtrl', ['$scope', notificationService, function($scope, notificationService) {
 
     $scope.action = function() {
       // This is a sample using the success helper method
