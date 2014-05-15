@@ -6,11 +6,13 @@
 
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/bower_components/pnotify/pnotify.core.css">
-
+  <link rel="stylesheet" href="/bower_components/pnotify/pnotify.buttons.css">
+  
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/pnotify/pnotify.core.js"></script>
   <script src="/bower_components/pnotify/pnotify.confirm.js"></script>
+  <script src="/bower_components/pnotify/pnotify.buttons.js"></script>
   <script src="/src/angular-pnotify.js"></script>
 
 </head>
@@ -28,23 +30,24 @@
       <p>View source for more details.</p>
       <hr>
       
-      <p><pre>notificationService.success('Successing text')</pre></p>
       <p><button ng-click="success()" class="btn btn-success">Success</button></p>
+      <p><pre>notificationService.success('Successing text')</pre></p>
       <hr>
       
-      <p><pre>notificationService.info('Infomative text')</pre></p>
       <p><button ng-click="info()" class="btn btn-info">Info</button></p>
+      <p><pre>notificationService.info('Infomative text')</pre></p>
       <hr>
       
-      <p><pre>notificationService.notice('Notice text')</pre></p>
       <p><button ng-click="notice()" class="btn btn-warning">Notice</button></p>
+      <p><pre>notificationService.notice('Notice text')</pre></p>
       <hr>
       
-      <p><pre>notificationService.error('Error text')</pre></p>
       <p><button ng-click="error()" class="btn btn-danger">Error</button></p>
+      <p><pre>notificationService.error('Error text')</pre></p>
       <hr>
       
       <p>Use the generic PNotify object.</p>
+      <p><button ng-click="generic()" class="btn btn-primary">Generic PNotify</button></p>
       <p>
         <pre>
 notificationService.notify({
@@ -58,9 +61,9 @@ notificationService.notify({
 });
         </pre>
       </p>
-      <p><button ng-click="generic()" class="btn btn-primary">Generic PNotify</button></p>
       <hr>
       
+      <p><button ng-click="confirmDialog()" class="btn btn-primary">Confirm dialog</button></p>
       <p>
         <pre>
 notificationService.notify({
@@ -83,17 +86,40 @@ notificationService.notify({
   alert('Oh ok. Chicken, I see.');
 });
         </pre>
-        
       </p>
-      <p><button ng-click="confirmDialog()" class="btn btn-primary">Confirm dialog</button></p>
+      <hr>
+
+      <p><button ng-click="overrideDefaults()" class="btn btn-primary">Override defaults</button></p>      
+      <p>
+        <pre>
+notificationService.notifyWithDefaults({
+  text: 'Keeps defaults but override delay',
+  delay: 1000,
+});
+        </pre>
+      </p>
+      
       
   </div>
 
   <script>
 
-  angular.module('pnotify-demo', ['jlareau.pnotify']);
+  angular.module('pnotify-demo', ['jlareau.pnotify'])
+  
+    .config(['notificationServiceProvider', function(notificationServiceProvider) {
 
-  angular.module('pnotify-demo')
+      notificationServiceProvider.setDefaults({
+        delay: 4000,
+        buttons: {
+          closer: false,
+          closer_hover: false,
+          sticker: false,
+          sticker_hover: false
+        },
+        type: 'error'
+      });
+
+    }])
 
     .controller('MyCtrl', ['$scope','notificationService', function ($scope, notificationService) {
 
@@ -121,13 +147,13 @@ notificationService.notify({
           title_escape: false,
           text: 'The notice text.',
           text_escape: false,
-          styling: "bootstrap3",
-          type: "notice", 
+          styling: 'bootstrap3',
+          type: 'notice', 
           icon: true
         });
         
       };
-      
+            
       $scope.confirmDialog = function() {
       
         notificationService.notify({
@@ -152,8 +178,15 @@ notificationService.notify({
       
       };
       
+      $scope.overrideDefaults = function() {
+        notificationService.notifyWithDefaults({
+          text: 'Keeps defaults but override delay',
+          delay: 1000
+        });
+      };
+    
     }]);
-
+      
   </script>
 
 </body>

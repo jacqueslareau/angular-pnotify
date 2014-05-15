@@ -48,9 +48,10 @@ angular.module('jlareau.pnotify', [])
           return this.notify(hash);
         },
 
-        notifyWithDefaults: function(hash) {
-          var settings = angular.copy(settings);
-          return this.notify(angular.extend(settings, hash));
+        notifyWithDefaults: function(options) {
+          var defaults = angular.copy(settings);
+          var combined = angular.extend(defaults, options);
+          return this.notify(combined);
         },
 
         notify: function(hash) {
