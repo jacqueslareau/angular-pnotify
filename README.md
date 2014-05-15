@@ -29,6 +29,7 @@ Include:
 ```html
 <link rel="stylesheet" href="bower_components/pnotify/pnotify.core.css">
 <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
+```
 
 Add the angular-pnotify module as a dependency to your application module:
 
