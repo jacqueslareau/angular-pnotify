@@ -140,7 +140,7 @@ notificationService.info('Hello World : Top left', 'top_left');
 You can also set a defined stack as the default:
 
 ```javascript
-notificationServiceProvider.setDefaultStack('bottom_right');
+notificationServiceProvider.setDefaultStack('top_left');
 ```
 
 ### Examples
