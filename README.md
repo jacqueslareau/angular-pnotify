@@ -12,7 +12,6 @@ A PNotify 2.0 port heavily based on [angular-pines-notify](https://github.com/my
 - [PNotify](http://sciactive.com/pnotify/)
 - [AngularJS](http://angularjs.org/)
 - [Bootstrap 3](http://getbootstrap.com)
-- [FontAwesome](http://fontawesome.io) optional
 
 ### Demo
 
@@ -107,7 +106,44 @@ angular.module('MyApp')
   }]);
 ```
 
-### Examples:
+### PNotify Stacks
+
+You can set the position and direction of notifications by using PNotify stacks. You can add stack information to the following methods: 
+
+* info
+* notice
+* error
+* success
+
+You need to define the stacks in the config section before:
+
+```javascript
+angular.module('MyApp')
+  .config(['notificationServiceProvider', function(notificationServiceProvider) {
+
+    // Configure a stack named 'top_left' that append a call 'stack-topleft'
+    notificationServiceProvider.setStack('top_left', 'stack-topleft', {
+        dir1: 'down',
+        dir2: 'right',
+        push: 'top'
+    }); 
+
+  }]);
+```
+
+Later, in a controller:
+
+```javascript
+notificationService.info('Hello World : Top left', 'top_left');
+```
+
+You can also set a defined stack as the default:
+
+```javascript
+notificationServiceProvider.setDefaultStack('bottom_right');
+```
+
+### Examples
 
 ```javascript
 angular.module('MyApp')
@@ -144,3 +180,5 @@ To the [angular-pines-notify](https://github.com/mykabam/angular-pines-notify) c
 - [valmy](https://github.com/valmy)
 - [mibamur](https://github.com/mibamur)
 - [MaximilianoRicoTabo](https://github.com/MaximilianoRicoTabo)
+
+Thanks to [mehdi-ghezal](https://github.com/mehdi-ghezal) for stack implementation.

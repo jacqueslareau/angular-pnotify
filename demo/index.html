@@ -14,7 +14,7 @@
   <script src="/bower_components/pnotify/pnotify.confirm.js"></script>
   <script src="/bower_components/pnotify/pnotify.buttons.js"></script>
   <script src="/src/angular-pnotify.js"></script>
-
+  
 </head>
 
 <body ng-app="pnotify-demo">
@@ -98,7 +98,43 @@ notificationService.notifyWithDefaults({
 });
         </pre>
       </p>
+      <hr>
       
+      <p><button ng-click="stackTopLeft()" class="btn btn-primary">Stack top left</button></p>      
+      <p>
+        In config:
+        <pre>
+// Configure a stack named 'top_left' that append a call 'stack-topleft'
+notificationServiceProvider.setStack('top_left', 'stack-topleft', {
+    dir1: 'down',
+    dir2: 'right',
+    push: 'top'
+});          
+        </pre>
+        In controller:
+        <pre>
+notificationService.info('Hello World : Top left', 'top_left');
+        </pre>
+      </p>
+      <hr>
+      
+      <p><button ng-click="stackBottomRight()" class="btn btn-primary">Stack bottom right</button></p>      
+      <p>
+        In config:
+        <pre>
+// Configure a stack named 'bottom_right' that append a call 'stack-bottomright'
+notificationServiceProvider.setStack('bottom_right', 'stack-bottomright', {
+    dir1: 'up',
+    dir2: 'left',
+    firstpos1: 25,
+    firstpos2: 25
+});
+        </pre>
+        In controller:
+        <pre>
+notificationService.info('Hello World : Bottom right', 'bottom_right');
+        </pre>
+      </p>
       
   </div>
 
@@ -118,6 +154,21 @@ notificationService.notifyWithDefaults({
         },
         type: 'error'
       });
+      
+      // Configure a stack named 'bottom_right' that append a call 'stack-bottomright'
+      notificationServiceProvider.setStack('bottom_right', 'stack-bottomright', {
+          dir1: 'up',
+          dir2: 'left',
+          firstpos1: 25,
+          firstpos2: 25
+      });
+
+      // Configure a stack named 'top_left' that append a call 'stack-topleft'
+      notificationServiceProvider.setStack('top_left', 'stack-topleft', {
+          dir1: 'down',
+          dir2: 'right',
+          push: 'top'
+      });      
 
     }])
 
@@ -185,6 +236,14 @@ notificationService.notifyWithDefaults({
         });
       };
     
+      $scope.stackTopLeft = function(){
+        notificationService.info('Hello World : Top left', 'top_left');
+      };
+
+      $scope.stackBottomRight = function(){
+        notificationService.info('Hello World : Bottom right', 'bottom_right');
+      };
+      
     }]);
       
   </script>
