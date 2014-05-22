@@ -1,65 +1,100 @@
 angular.module('jlareau.pnotify', [])
 
-  .provider('notificationService', [ function() {
+    .provider('notificationService', [ function() {
 
-    var settings = {
-      styling: 'bootstrap3'
-    };
+        var settings = {
+            styling: 'bootstrap3'
+        };
 
-    this.setDefaults = function(defaults) { settings = defaults };
+        var stacks = {};
+        var defaultStack = false;
 
-    this.$get = [ function() {
+        var initHash = function(stackName) {
+            var hash = angular.copy(settings);
 
-      return {
+            if ((stackName || (stackName = defaultStack)) && stackName in stacks) {
+                hash.stack = stacks[stackName].stack;
 
-        /* ========== SETTINGS RELATED METHODS =============*/
+                if (stacks[stackName].addclass) {
+                    hash.addclass = 'addclass' in hash ? hash.addclass + ' ' + stacks[stackName].addclass : stacks[stackName].addclass;
+                }
+            }
 
-        getSettings: function() {
-          return settings;
-        },
-
-        /* ============== NOTIFICATION METHODS ==============*/
-
-        notice: function(content) {
-          var hash = angular.copy(settings);
-          hash.type = 'notice';
-          hash.text = content;
-          return this.notify(hash);
-        },
-
-        info: function(content) {
-          var hash = angular.copy(settings);
-          hash.type = 'info';
-          hash.text = content;
-          return this.notify(hash);
-        },
-
-        success: function(content) {
-          var hash = angular.copy(settings);
-          hash.type = 'success';
-          hash.text = content;
-          return this.notify(hash);
-        },
-
-        error: function(content) {
-          var hash = angular.copy(settings);
-          hash.type = 'error';
-          hash.text = content;
-          return this.notify(hash);
-        },
-
-        notifyWithDefaults: function(options) {
-          var defaults = angular.copy(settings);
-          var combined = angular.extend(defaults, options);
-          return this.notify(combined);
-        },
-
-        notify: function(hash) {
-          return new PNotify(hash);
+            return hash;
         }
 
-      };
+        this.setDefaults = function(defaults) {
+            settings = defaults
+        };
 
-    }];
+        this.setStack = function(name, addclass, stack) {
+            if (angular.isObject(addclass)) {
+                stack = addclass;
+                addclass = false;
+            }
 
-  }]);
+            stacks[name] = {
+                stack: stack,
+                addclass: addclass
+            };
+        };
+
+        this.setDefaultStack = function(name) {
+            defaultStack = name;
+        };
+
+        this.$get = [ function() {
+
+            return {
+
+                /* ========== SETTINGS RELATED METHODS =============*/
+
+                getSettings: function() {
+                    return settings;
+                },
+
+                /* ============== NOTIFICATION METHODS ==============*/
+
+                notice: function(content, stack) {
+                    var hash = initHash(stack);
+                    hash.type = 'notice';
+                    hash.text = content;
+                    return this.notify(hash);
+                },
+
+                info: function(content, stack) {
+                    var hash = initHash(stack);
+                    hash.type = 'info';
+                    hash.text = content;
+                    return this.notify(hash);
+                },
+
+                success: function(content, stack) {
+                    var hash = initHash(stack);
+                    hash.type = 'success';
+                    hash.text = content;
+                    return this.notify(hash);
+                },
+
+                error: function(content, stack) {
+                    var hash = initHash(stack);
+                    hash.type = 'error';
+                    hash.text = content;
+                    return this.notify(hash);
+                },
+
+                notifyWithDefaults: function(options, stack) {
+                    var defaults = initHash(stack);
+                    var combined = angular.extend(defaults, options);
+                    return this.notify(combined);
+                },
+
+                notify: function(hash) {
+                    return new PNotify(hash);
+                }
+
+            };
+
+        }];
+
+    }]);
