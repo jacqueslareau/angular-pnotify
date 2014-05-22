@@ -55,25 +55,25 @@ angular.module('MyApp')
 
 Display an info notice.
 
-`notificationService.info(text);`
+`notificationService.info(text, [stack name]);`
 
 #### notice
 
 Display notification as a notice.
 
-`notificationService.notice(text);`
+`notificationService.notice(text, [stack name]);`
 
 #### error
 
 Display an error notice.
 
-`notificationService.error(text);`
+`notificationService.error(text, [stack name]);`
 
 #### success
 
 Display a success notice.
 
-`notificationService.success(text);`
+`notificationService.success(text, [stack name]);`
 
 #### notify
 
