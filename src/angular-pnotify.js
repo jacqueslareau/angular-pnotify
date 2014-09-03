@@ -1,5 +1,7 @@
 (function(){
 
+	'use strict';
+	
 	angular.module('jlareau.pnotify', [])
 
 		.provider('notificationService', [ function() {
