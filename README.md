@@ -40,15 +40,15 @@ Then add angular-pnotify.js.
 Here is an example using Bootstrap 3.
 
 ```html
-<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="/bower_components/pnotify/pnotify.core.css">
-<link rel="stylesheet" href="/bower_components/pnotify/pnotify.buttons.css">
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="bower_components/pnotify/pnotify.core.css">
+<link rel="stylesheet" href="bower_components/pnotify/pnotify.buttons.css">
 
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/bower_components/angular/angular.js"></script>
-<script src="/bower_components/pnotify/pnotify.core.js"></script>
-<script src="/bower_components/pnotify/pnotify.confirm.js"></script>
-<script src="/bower_components/pnotify/pnotify.buttons.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/pnotify/pnotify.core.js"></script>
+<script src="bower_components/pnotify/pnotify.confirm.js"></script>
+<script src="bower_components/pnotify/pnotify.buttons.js"></script>
 <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
 ```
 
