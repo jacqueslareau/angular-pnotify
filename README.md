@@ -6,12 +6,19 @@ This service provides several helper methods to display notifications on web app
 
 A PNotify 2.0 port heavily based on [angular-pines-notify](https://github.com/mykabam/angular-pines-notify) project. 
 
-### Requirements
+### Dependencies
 
 - [JQuery](http://jquery.com/)
 - [PNotify](http://sciactive.com/pnotify/)
 - [AngularJS](http://angularjs.org/)
+
+#### Optional
+
+Need to use at least Bootstrap 3 or jQuery UI to make pretty notifications.
+
 - [Bootstrap 3](http://getbootstrap.com)
+- [jQuery UI](http://http://jqueryui.com)
+- [FontAwesome](http://http://fontawesome.io)
 
 ### Demo
 
@@ -25,6 +32,8 @@ A PNotify 2.0 port heavily based on [angular-pines-notify](https://github.com/my
 
 Include PNotify related assets. You need to include at least pnotify.core.css and pnotify.core.js.
 Don't forget pnotify.confirm.js if you need confirmation dialogs.
+
+Include at least Bootstrap 3 or jQuery UI.
 
 Then add angular-pnotify.js.
 
@@ -94,17 +103,55 @@ Sometimes you want to set defaults for the whole application. You can do so in y
 
 ```javascript
 angular.module('MyApp')
-  .config(['notificationServiceProvider', function(notificationServiceProvider) {
+	.config(['notificationServiceProvider', function(notificationServiceProvider) {
 
-    notificationServiceProvider.setDefaults({
-      history: false,
-      delay: 4000,
-      closer: false,
-      closer_hover: false
-    });
+		notificationServiceProvider.setDefaults({
+			history: false,
+			delay: 4000,
+			closer: false,
+			closer_hover: false
+		});
 
-  }]);
+	}])
+;
 ```
+
+You can also chain configuration calls:
+
+```javascript
+angular.module('MyApp')
+	.config(['notificationServiceProvider', function(notificationServiceProvider) {
+
+		notificationServiceProvider
+		
+			.setDefaults({
+				history: false,
+				delay: 4000,
+				closer: false,
+				closer_hover: false
+			})
+		
+			// Configure a stack named 'bottom_right' that append a call 'stack-bottomright'
+			.setStack('bottom_right', 'stack-bottomright', {
+				dir1: 'up',
+				dir2: 'left',
+				firstpos1: 25,
+				firstpos2: 25
+			})
+
+			// Configure a stack named 'top_left' that append a call 'stack-topleft'
+			.setStack('top_left', 'stack-topleft', {
+				dir1: 'down',
+				dir2: 'right',
+				push: 'top'
+			})
+			
+		;
+
+	}])
+;
+```
+
 
 ### PNotify Stacks
 
@@ -119,16 +166,17 @@ You need to define the stacks in the config section before:
 
 ```javascript
 angular.module('MyApp')
-  .config(['notificationServiceProvider', function(notificationServiceProvider) {
+	.config(['notificationServiceProvider', function(notificationServiceProvider) {
 
-    // Configure a stack named 'top_left' that append a call 'stack-topleft'
-    notificationServiceProvider.setStack('top_left', 'stack-topleft', {
-        dir1: 'down',
-        dir2: 'right',
-        push: 'top'
-    }); 
+		// Configure a stack named 'top_left' that append a call 'stack-topleft'
+		notificationServiceProvider.setStack('top_left', 'stack-topleft', {
+			dir1: 'down',
+			dir2: 'right',
+			push: 'top'
+		}); 
 
-  }]);
+	}])
+;
 ```
 
 Later, in a controller:
@@ -147,23 +195,24 @@ notificationServiceProvider.setDefaultStack('top_left');
 
 ```javascript
 angular.module('MyApp')
-  .controller('MyCtrl', ['$scope', 'notificationService', function($scope, notificationService) {
+	.controller('MyCtrl', ['$scope', 'notificationService', function($scope, notificationService) {
 
-    $scope.action = function() {
-      // This is a sample using the success helper method
-      notificationService.success('This is a success notification');
-    };
+		$scope.action = function() {
+			// This is a sample using the success helper method
+			notificationService.success('This is a success notification');
+		};
 
-    $scope.anotherAction = function() {
-      // This is a sample using the generic PNotify notification object
-      notificationService.notify({
-        title: 'Notice Title',
-        text: 'Notice Text',
-        hide: false
-      });
-    };
-    
-  }]);
+		$scope.anotherAction = function() {
+			// This is a sample using the generic PNotify notification object
+			notificationService.notify({
+				title: 'Notice Title',
+				text: 'Notice Text',
+				hide: false
+			});
+		};
+
+	}])
+;
 ```
 
 ### Options
