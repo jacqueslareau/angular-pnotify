@@ -144,7 +144,9 @@ notificationService.info('Hello World : Bottom right', 'bottom_right');
   
     .config(['notificationServiceProvider', function(notificationServiceProvider) {
 
-      notificationServiceProvider.setDefaults({
+      notificationServiceProvider
+	  
+	  .setDefaults({
         delay: 4000,
         buttons: {
           closer: false,
@@ -153,22 +155,22 @@ notificationService.info('Hello World : Bottom right', 'bottom_right');
           sticker_hover: false
         },
         type: 'error'
-      });
+      })
       
-      // Configure a stack named 'bottom_right' that append a call 'stack-bottomright'
-      notificationServiceProvider.setStack('bottom_right', 'stack-bottomright', {
+	  // Configure a stack named 'bottom_right' that append a call 'stack-bottomright'
+      .setStack('bottom_right', 'stack-bottomright', {
           dir1: 'up',
           dir2: 'left',
           firstpos1: 25,
           firstpos2: 25
-      });
-
-      // Configure a stack named 'top_left' that append a call 'stack-topleft'
-      notificationServiceProvider.setStack('top_left', 'stack-topleft', {
+      })
+      
+	  // Configure a stack named 'top_left' that append a call 'stack-topleft'
+      .setStack('top_left', 'stack-topleft', {
           dir1: 'down',
           dir2: 'right',
           push: 'top'
-      });      
+      });
 
     }])
 

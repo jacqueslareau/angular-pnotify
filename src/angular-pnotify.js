@@ -25,6 +25,7 @@ angular.module('jlareau.pnotify', [])
 
         this.setDefaults = function(defaults) {
             settings = defaults
+			return this;
         };
 
         this.setStack = function(name, addclass, stack) {
@@ -37,10 +38,12 @@ angular.module('jlareau.pnotify', [])
                 stack: stack,
                 addclass: addclass
             };
+			return this;
         };
 
         this.setDefaultStack = function(name) {
             defaultStack = name;
+			return this;
         };
 
         this.$get = [ function() {
