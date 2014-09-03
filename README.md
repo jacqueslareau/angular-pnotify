@@ -30,14 +30,25 @@ Need to use at least Bootstrap 3 or jQuery UI to make pretty notifications.
 
 ### Usage
 
+Include at least Bootstrap 3 or jQuery UI CSS.
+
 Include PNotify related assets. You need to include at least pnotify.core.css and pnotify.core.js.
 Don't forget pnotify.confirm.js if you need confirmation dialogs.
 
-Include at least Bootstrap 3 or jQuery UI.
-
 Then add angular-pnotify.js.
 
+Here is an example using Bootstrap 3.
+
 ```html
+<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/bower_components/pnotify/pnotify.core.css">
+<link rel="stylesheet" href="/bower_components/pnotify/pnotify.buttons.css">
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/pnotify/pnotify.core.js"></script>
+<script src="/bower_components/pnotify/pnotify.confirm.js"></script>
+<script src="/bower_components/pnotify/pnotify.buttons.js"></script>
 <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
 ```
 
@@ -51,11 +62,12 @@ In order to use the API you need to inject the `notificationService` service int
 
 ```javascript
 angular.module('MyApp')
-  .controller('MyCtrl', ['$scope', 'notificationService', function($scope, notificationService) {
-    $scope.action = function() {
-      notificationService.success('Success!!!');
-    };
-  }]);
+	.controller('MyCtrl', ['$scope', 'notificationService', function($scope, notificationService) {
+		$scope.action = function() {
+			notificationService.success('Success!!!');
+		};
+	}])
+;
 ```
 
 ### Methods
