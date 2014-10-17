@@ -107,7 +107,7 @@ Display a generic PNotify notification with the options you pass to it. It ignor
 Same as `notify` but will merge the options with defaults. Useful when you only want to override or add one options, without 
 clearing all defaults.
 
-`notificationService.notifyWithDefaults(options);`
+`notificationService.notifyWithDefaults(options, [stack name]);`
 
 ### Provider
 
