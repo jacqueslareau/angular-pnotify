@@ -25,10 +25,10 @@
 				}
 
 				return hash;
-			}
+			};
 
 			this.setDefaults = function(defaults) {
-				settings = defaults
+				settings = defaults;
 				return this;
 			};
 
