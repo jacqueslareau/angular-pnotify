@@ -233,6 +233,13 @@ All the PNotify options can be passed through the notify functions.
 You can read more about the supported list of options and what they do on the
 [PNotify Github Page](https://github.com/sciactive/pnotify)
 
+### See Also
+
+- [ngToast](https://github.com/tameraydin/ngToast)
+- [Angular Material: Toast](https://material.angularjs.org/#/demo/material.components.toast)
+- [angular-toastr](https://github.com/Foxandxss/angular-toastr)
+- [angular-toasty](https://github.com/Salakar/angular-toasty)
+
 ### Thanks
 
 To the [angular-pines-notify](https://github.com/mykabam/angular-pines-notify) contributors:
