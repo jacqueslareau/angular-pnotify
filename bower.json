@@ -1,6 +1,6 @@
 {
 	"name": "angular-pnotify",
-	"version": "0.0.6",
+	"version": "0.1.0",
 	"homepage": "https://github.com/jacqueslareau/angular-pnotify",
 	"authors": [
 		"Jacques Lareau <jack.lareau@gmail.com>"
@@ -21,9 +21,9 @@
 		"test",
 		"tests"
 	],
-	"dependencies": {
-		"angular": "^1.2.23",
-		"pnotify": "~2.0.1",
-		"jquery": ">=1.9"
-	}
+    "dependencies": {
+        "angular": "~1.5.5",
+        "pnotify": "~3.0.0",
+        "jquery": ">=1.9"
+    }
 }
