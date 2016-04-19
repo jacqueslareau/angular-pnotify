@@ -1,7 +1,7 @@
 (function(){
 
 	'use strict';
-	
+
 	angular.module('jlareau.pnotify', [])
 
 		.provider('notificationService', [ function() {
@@ -98,7 +98,11 @@
 
 					notify: function(hash) {
 						return new PNotify(hash);
-					}
+					},
+                    
+                    removeNotifications: function() {
+                        return PNotify.removeAll();
+                    }
 
 				};
 
