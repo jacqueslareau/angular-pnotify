@@ -32,7 +32,7 @@ Need to use at least Bootstrap 3 or jQuery UI to make pretty notifications.
 
 Include at least Bootstrap 3 or jQuery UI CSS.
 
-Include PNotify related assets. You need to include at least pnotify.core.css and pnotify.core.js.
+Include PNotify related assets. You need to include at least pnotify.css and pnotify.js.
 Don't forget pnotify.confirm.js if you need confirmation dialogs.
 
 Then add angular-pnotify.js.
@@ -41,14 +41,14 @@ Here is an example using Bootstrap 3.
 
 ```html
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="bower_components/pnotify/pnotify.core.css">
-<link rel="stylesheet" href="bower_components/pnotify/pnotify.buttons.css">
+<link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.css">
+<link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.buttons.css">
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/pnotify/dist/pnotify.core.js"></script>
-<script src="bower_components/pnotify/pnotify.confirm.js"></script>
-<script src="bower_components/pnotify/pnotify.buttons.js"></script>
+<script src="bower_components/pnotify/dist/pnotify.js"></script>
+<script src="bower_components/pnotify/dist/pnotify.confirm.js"></script>
+<script src="bower_components/pnotify/dist/pnotify.buttons.js"></script>
 <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
 ```
 
@@ -108,6 +108,12 @@ Same as `notify` but will merge the options with defaults. Useful when you only 
 clearing all defaults.
 
 `notificationService.notifyWithDefaults(options, [stack name]);`
+
+#### removeNotifications
+
+Will clear all currently showing notifications.
+
+`notificationService.removeNotifications();`
 
 ### Provider
 
