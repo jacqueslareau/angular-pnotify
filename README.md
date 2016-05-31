@@ -28,6 +28,10 @@ Need to use at least Bootstrap 3 or jQuery UI to make pretty notifications.
 
 `bower install angular-pnotify`
 
+Or
+
+`npm install angular-pnotify`
+
 ### Usage
 
 Include at least Bootstrap 3 or jQuery UI CSS.
