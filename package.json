@@ -1,6 +1,6 @@
 {
   "name": "angular-pnotify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AngularJS wrapper for PNotify",
   "main": "src/angular-pnotify.js",
   "scripts": {
