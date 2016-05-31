@@ -1,10 +1,10 @@
 angular-pnotify
 ====================
 
-This is a simple wrapper for [PNotify](http://sciactive.com/pnotify/) as a [AngularJS](http://angularjs.org/) service. 
+This is a simple wrapper for [PNotify](http://sciactive.com/pnotify/) as a [AngularJS](http://angularjs.org/) service.
 This service provides several helper methods to display notifications on web applications.
 
-A PNotify 2.0 port heavily based on [angular-pines-notify](https://github.com/mykabam/angular-pines-notify) project. 
+A PNotify 2.0 port heavily based on [angular-pines-notify](https://github.com/mykabam/angular-pines-notify) project.
 
 ### Dependencies
 
@@ -46,7 +46,7 @@ Here is an example using Bootstrap 3.
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/pnotify/pnotify.core.js"></script>
+<script src="bower_components/pnotify/dist/pnotify.core.js"></script>
 <script src="bower_components/pnotify/pnotify.confirm.js"></script>
 <script src="bower_components/pnotify/pnotify.buttons.js"></script>
 <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
@@ -58,7 +58,7 @@ Add the angular-pnotify module as a dependency to your application module:
 angular.module('MyApp', ['jlareau.pnotify']);
 ```
 
-In order to use the API you need to inject the `notificationService` service into your controllers. 
+In order to use the API you need to inject the `notificationService` service into your controllers.
 
 ```javascript
 angular.module('MyApp')
@@ -104,7 +104,7 @@ Display a generic PNotify notification with the options you pass to it. It ignor
 
 #### notifyWithDefaults
 
-Same as `notify` but will merge the options with defaults. Useful when you only want to override or add one options, without 
+Same as `notify` but will merge the options with defaults. Useful when you only want to override or add one options, without
 clearing all defaults.
 
 `notificationService.notifyWithDefaults(options, [stack name]);`
@@ -135,14 +135,14 @@ angular.module('MyApp')
 	.config(['notificationServiceProvider', function(notificationServiceProvider) {
 
 		notificationServiceProvider
-		
+
 			.setDefaults({
 				history: false,
 				delay: 4000,
 				closer: false,
 				closer_hover: false
 			})
-		
+
 			// Configure a stack named 'bottom_right' that append a call 'stack-bottomright'
 			.setStack('bottom_right', 'stack-bottomright', {
 				dir1: 'up',
@@ -157,7 +157,7 @@ angular.module('MyApp')
 				dir2: 'right',
 				push: 'top'
 			})
-			
+
 		;
 
 	}])
@@ -167,7 +167,7 @@ angular.module('MyApp')
 
 ### PNotify Stacks
 
-You can set the position and direction of notifications by using PNotify stacks. You can add stack information to the following methods: 
+You can set the position and direction of notifications by using PNotify stacks. You can add stack information to the following methods:
 
 * info
 * notice
@@ -185,7 +185,7 @@ angular.module('MyApp')
 			dir1: 'down',
 			dir2: 'right',
 			push: 'top'
-		}); 
+		});
 
 	}])
 ;

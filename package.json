@@ -24,7 +24,8 @@
   ],
   "dependencies": {
     "angular": "~1.5.5",
-    "pnotify": "~3.0.0",
-    "jquery": ">=1.9"
+    "bootstrap": "^3.3.6",
+    "jquery": ">=1.9",
+    "pnotify": "~3.0.0"
   }
 }
